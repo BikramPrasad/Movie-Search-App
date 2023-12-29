@@ -46,7 +46,15 @@ const MovieDetail = () => {
       <div className='container'>
         <div className='row'>
           <div className='col-md-4'>
-            <img src={movie?.Poster} className='thumbnail' alt={movie.Title} />
+            <img
+              src={
+                movie?.Poster === 'N/A'
+                  ? 'https://dummyimage.com/300/000000/fff.png&text=No+Image+Available'
+                  : movie?.Poster
+              }
+              className='thumbnail'
+              alt={movie.Title}
+            />
           </div>
           <div className='col-md-8'>
             <h2>{movie.Title}</h2>

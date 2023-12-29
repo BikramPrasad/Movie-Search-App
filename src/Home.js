@@ -6,10 +6,12 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [searchText, setSearchText] = useState('Superman');
+  const [inputValue, setInputValue] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault();
     fetchMovies(searchText);
+    setInputValue(searchText);
     setSearchText('');
   };
   const handleInputChanged = (e) => {
@@ -60,7 +62,6 @@ function App() {
               placeholder='Search Movie...'
               value={searchText}
               onChange={handleInputChanged}
-              required
             />
             <br />
             <button type='button' className='btn btn-primary'>
@@ -69,7 +70,7 @@ function App() {
           </form>
         </div>
       </div>
-      <Movies movies={movies} />
+      <Movies movies={movies} searchText = {inputValue} />
     </div>
   );
 }
